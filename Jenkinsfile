@@ -1,7 +1,7 @@
 pipeline{
     agent(any)
     stages{
-        stage("git checkout-4"){
+        stage("git checkout-3"){
             steps{
                 echo "git --version"
             }
