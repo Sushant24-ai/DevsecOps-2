@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("git checkout-1"){
             steps{
-                bash "git --version"
+                echo "git --version"
             }
         }
 
