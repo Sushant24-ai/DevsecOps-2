@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Build Artifact-1"){
             steps{
-                sh "apt-get install maven"
+                sh "docker build sush24 ."
                 /*archive "target/*.jar"*/
             }
         }
