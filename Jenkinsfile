@@ -3,8 +3,8 @@ pipeline{
     stages{
         stage("Build Artifact-1"){
             steps{
-                sh "mvn clean package -DskipTest=true"
-                archive "target/*.jar"
+                sh "apt-get install maven"
+                /*archive "target/*.jar"*/
             }
         }
 
