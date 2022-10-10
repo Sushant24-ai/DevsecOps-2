@@ -1,9 +1,10 @@
 pipeline{
     agent(any)
     stages{
-        stage("git checkout-3"){
+        stage("Build Artifact"){
             steps{
-                echo "git --version"
+                sh "mvn clean package -DskipTest=true"
+                archive "target/*.jar"
             }
         }
 
