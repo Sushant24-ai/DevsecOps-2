@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Build Artifact-1"){
             steps{
-                sh "docker build -t sush24 ."
+                sh ""
                 /*archive "target/*.jar"*/
             }
         }
