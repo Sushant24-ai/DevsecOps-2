@@ -1,11 +1,10 @@
 pipeline{
     agent(any)
     stages{
-        stage("Build Artifact-6"){
+        stage("Build Artifact"){
             steps{
-                echo "pipeline is working-1"
-                sh ""
-                /*archive "target/*.jar"*/
+              sh "mvn clean package -DskipTests=true"
+              archive 'target/*.jar' //so that they can be downloaded later
             }
         }
 
