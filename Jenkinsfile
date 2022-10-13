@@ -1,7 +1,7 @@
 pipeline{
     agent(any)
     stages{
-        stage("Build Artifact-2"){
+        stage("Build Artifact-3"){
             steps{
                 echo "pipeline is working-1"
                 sh ""
