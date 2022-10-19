@@ -20,5 +20,18 @@ pipeline{
             }
         }
 
+         stage('SonarQube - SAST') {
+             steps {
+              // withSonarQubeEnv('SonarQube') {
+                   sh "mvn clean verify sonar:sonar -Dsonar.projectKey=sush24 -Dsonar.host.url=http://3.237.182.74:9000/ -Dsonar.login=sqp_8f8198f5e43ac185aaab0e48283ce2757b53d924"
+            }
+          //   timeout(time: 2, unit: 'MINUTES') {
+          //        script {
+          //          waitForQualityGate abortPipeline: false
+          //      }
+          //  }
+        // }
+        }
+
     }
 }
