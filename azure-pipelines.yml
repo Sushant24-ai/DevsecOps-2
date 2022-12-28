@@ -26,8 +26,8 @@ stages:
     # Task-1: Build Docker Image and push to Azure Container Registry ACR
     - task: Docker@2
       inputs:
-        containerRegistry: 'manual-aksdevopsacr-svc'
-        repository: 'custom2aksnginxapp1'
+        containerRegistry: 'docker-registry'
+        repository: 'az-400'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
@@ -41,7 +41,7 @@ stages:
     # Target Directory: $(Build.ArtifactStagingDirectory)
     - task: CopyFiles@2
       inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifests'
+        SourceFolder: '$(System.DefaultWorkingDirectory)/src'
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
         OverWrite: true
