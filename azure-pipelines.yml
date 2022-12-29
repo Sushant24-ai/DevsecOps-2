@@ -22,6 +22,17 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps: 
+    - task: Maven@4
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/junit*.xml'
+        codeCoverageToolOption: 'JaCoCo'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
 
     # Task-1: Build Docker Image and push to Azure Container Registry ACR
     - task: Docker@2
