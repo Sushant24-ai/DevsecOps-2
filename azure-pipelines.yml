@@ -27,7 +27,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'docker-registry'
-        repository: 'az-400'
+        repository: 'sush24'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
@@ -39,20 +39,19 @@ stages:
     # Task-2: Copy files (Copy files from a source folder to target folder)
     # Source Directory: $(System.DefaultWorkingDirectory)/kube-manifests
     # Target Directory: $(Build.ArtifactStagingDirectory)
-    - task: CopyFiles@2
+    - task: PowerShell@2
+      displayName: List all Folders in $(System.DefaultWorkingDirectory)
       inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)/src'
-        Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
-        OverWrite: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          
+          Write-Host "Hello World"
+          Get-ChildItem -path $(System.DefaultWorkingDirectory) -recurse
     # List files from Build Artifact Staging Directory - After Copy
     - bash: echo After copying to Build Artifact Directory; ls -R $(Build.ArtifactStagingDirectory)  
     # Task-3: Publish build artifacts (Publish build to Azure Pipelines)           
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'kube-manifests'
-        publishLocation: 'Container'
+    
     
 
 
